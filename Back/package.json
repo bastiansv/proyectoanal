@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/VadokDev/INF236-Users-Backend-Boilerplate#readme",
   "dependencies": {
+    "axios": "^1.6.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "eslint": "^7.24.0",
