@@ -9,7 +9,7 @@ export default class UserController {
 	async getBynombre(req, res) {
 		const users = await User.findAll({
 			where: {
-				nombre: req.params.nombre
+				name: req.params.nombre
 			}
 		});
 		res.send(users);
@@ -22,15 +22,15 @@ export default class UserController {
 
 	async create(req, res) {
 		const user = await User.create({
-			nombre: req.body.nombre,
-			email: req.body.email,
+			name: req.body.name,
+			password: req.body.password,
 		});
 		res.send(user);
 	}
 
 	async update(req, res) {
 		const user = await User.findByPk(req.params.userId);
-		user.update({nombre: req.body.nombre, email: req.body.email});
+		user.update({name: req.body.name, password: req.body.password});
 		res.send(user);
 	}
 

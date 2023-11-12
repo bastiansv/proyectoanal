@@ -1,9 +1,11 @@
 import UserController from './UserController.js';
 import SimulationController from './SimulationController.js';
+import LoginController from './LoginController.js';
 
 export default (app) => {
 	const userController = new UserController();
 	const simulationController = new SimulationController();
+	const loginController = new LoginController();
 
 	app.get('/users', userController.getAll);
 	app.post('/users', userController.create);
@@ -16,4 +18,6 @@ export default (app) => {
   	app.get('/simulations/:id', simulationController.getSimulationById);
   	app.put('/simulations/:id', simulationController.updateSimulation);
   	app.delete('/simulations/:id', simulationController.deleteSimulation);
+
+	app.post("/login", loginController.login);
 };
