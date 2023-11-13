@@ -1,6 +1,7 @@
 import UserController from './UserController.js';
 import SimulationController from './SimulationController.js';
 import LoginController from './LoginController.js';
+const verifySign = require("./verifyToken.js");
 
 export default (app) => {
 	const userController = new UserController();
