@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import routes from './controllers/routes.js';
-require("dotenv").config();
 
 const app = express();  // Instanciamos el servidor web
 app.use(express.json());// Habilitamos el parsing automático de requests en JSON, para su posterior uso
