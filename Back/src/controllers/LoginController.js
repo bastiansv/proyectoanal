@@ -1,21 +1,5 @@
 import User from '../models/User.js';
 
-<<<<<<< Updated upstream
-export default class LoginController {
-    async login(req, res) {
-        const user = await User.findOne({
-            where: {
-                password: req.body.password,
-            },
-        });
-        if (!user) {
-            return res.status(400).send("contraseña incorrecta");
-        } else {
-            return res.send("Estas logeado");
-        }
-    }
-};
-=======
 export default class{
     async login(req, res) {
         console.log("recibi "+req.body.name+" y "+req.body.password);
@@ -34,4 +18,3 @@ export default class{
 	}
     
 }
->>>>>>> Stashed changes

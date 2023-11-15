@@ -19,10 +19,6 @@ export default (app) => {
   	app.put('/simulations/:id', simulationController.updateSimulation);
   	app.delete('/simulations/:id', simulationController.deleteSimulation);
 
-<<<<<<< Updated upstream
-	app.post("/login", loginController.login);
-=======
 	app.put('/login',loginController.login);
 	app.get('/login',loginController.get);
->>>>>>> Stashed changes
 };

@@ -17,23 +17,13 @@ User.init(
     },
 
     password: {
-      type: Sequelize.DataTypes.INTEGER,
+      type: Sequelize.DataTypes.STRING,
       allowNull: false,
     },
   },
-<<<<<<< Updated upstream
   {
     sequelize,
     timestamps: false,
-=======
-  name: Sequelize.DataTypes.STRING,
-  password: {
-    type: Sequelize.DataTypes.STRING,
-    unique: false,
-    allowNull: false
-  }}, {
-    sequelize,
->>>>>>> Stashed changes
   }
 );
 
