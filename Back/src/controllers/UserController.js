@@ -9,7 +9,11 @@ export default class UserController {
 	async getBynombre(req, res) {
 		const users = await User.findAll({
 			where: {
+<<<<<<< Updated upstream
 				name: req.params.nombre
+=======
+				name: req.params.name
+>>>>>>> Stashed changes
 			}
 		});
 		res.send(users);
