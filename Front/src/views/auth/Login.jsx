@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { logUser } from "../../repositories/login";
 
-
 const Login = () => {
   const history = useHistory();
 
@@ -53,7 +52,7 @@ const Login = () => {
             </div>
             <div className="float-right">
                 <button type="submit" className="btn btn-primary">
-                    Guardar
+                    Iniciar Sesión
                 </button>
             </div>
         </form>
