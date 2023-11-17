@@ -69,16 +69,20 @@ return (
             ))}
           </tbody>
         </table>
-        <Link to={`/menu-principal/?userId=${userId}`}>
-          <button className="btn btn-primary">Volver al Menú Principal</button>
-        </Link>
+       <div className="d-flex justify-content-between mt-4">
+          <Link to={`/menu-principal/?userId=${userId}`}>
+            <button className="btn btn-primary">Volver al Menú Principal</button>
+          </Link>
+          <h3>Monto total: {simulation.totalAmount}</h3>
+        </div> 
       </div>
+      
     ) : (
       <p>Cargando detalles de la simulación...</p>
     )}
+  
   </div>
 );
-
 }
 
 

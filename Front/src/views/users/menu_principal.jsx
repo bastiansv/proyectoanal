@@ -6,11 +6,13 @@ const MenuPrincipal = () => {
   const params = new URLSearchParams(search);
   const userId = params.get("userId");
   return (
-    <div className="container mt-4">
-      <div>
+    <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '80vh'}}>
+      <div style={{padding: "100px"}}>
         <Link to={`/nueva-ficha/?userId=${userId}`}>
           <button className="btn btn-primary">Nueva ficha de solicitud de préstamo</button>
         </Link>
+      </div>
+      <div style={{padding: "100px"}}>  
         <Link to={`/simulaciones/?userId=${userId}`}>
           <button className="btn btn-primary">Ver simulaciones realizadas</button>
         </Link>
