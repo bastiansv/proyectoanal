@@ -19,8 +19,8 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      clientId: {
-        type: Sequelize.INTEGER,
+      userRut: {
+        type: Sequelize.STRING,
         allowNull: false
       },
       totalAmount: {
