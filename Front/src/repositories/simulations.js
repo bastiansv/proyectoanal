@@ -9,4 +9,8 @@ const createSimulation = async (data) =>
 	axios
 		.post(`${process.env.REACT_APP_BACKEND_URL}/simulations`, data);
 
-export {getAllSimulations,createSimulation};
+const getSimulationById = (id) =>
+		axios
+			.get(`${process.env.REACT_APP_BACKEND_URL}/simulations/${id}`)
+			.then((res) => res.data);
+export {getAllSimulations,createSimulation,getSimulationById};

@@ -2,10 +2,10 @@ import User from '../models/User.js';
 
 export default class{
     async login(req, res) {
-        console.log("recibi "+req.body.name+" y "+req.body.password);
+        console.log("recibi "+req.body.email+" y "+req.body.password);
         const logeo = await User.findOne({
             where:{
-                name: req.body.name,
+                email: req.body.email,
                 password: req.body.password
             },
         });

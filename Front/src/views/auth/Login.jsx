@@ -23,16 +23,16 @@ const Login = () => {
     <div className="container mt-4">
         <form onSubmit={handleLogin}>
             <div className="form-group">
-                <label htmlFor="nombre">Nombre</label>
+                <label htmlFor="email">Email</label>
                 <input
                     className="form-control"
-                    id="name"
-                    type="text"
-                    value={state.nombre}
+                    id="email"
+                    type="email"
+                    value={state.email}
                     onChange={(e) => {
-                        setstate({ ...state, name: e.target.value });
+                        setstate({ ...state, email: e.target.value });
                     }}
-                    placeholder="Ingrese Nombre"
+                    placeholder="Ingrese Email"
                     required
                 />
             </div>

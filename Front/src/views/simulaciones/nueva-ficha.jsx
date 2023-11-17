@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { createSimulation } from "../../repositories/simulations";
 import { useLocation,useHistory} from "react-router-dom";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function NuevaFicha () {
 	const { search } = useLocation();
@@ -16,7 +17,7 @@ export default function NuevaFicha () {
 		e.preventDefault();
 		try {
 			const response = await createSimulation(state);
-			history.push(`/menu-principal/${userid}`);	
+			history.push(`/detalle-simulacion/?simulationId=${response.data.id}&userId=${userid}`);	
 		} catch (error) {
 			console.log(error);
 			alert("A ocurrido un error al actualizar");
@@ -27,21 +28,21 @@ export default function NuevaFicha () {
 		<div className="container mt-4">
 			<form onSubmit={submitForm}>
 				<div className="form-group">
-					<label htmlFor="clientId">clientId</label>
+					<label htmlFor="clientId">Rut del Usuario</label>
 					<input
 						className="form-control"
-						id="clientId"
+						id="userRut"
 						type="text"
-						value={state.clientId}
+						value={state.userRut}
 						onChange={(e) => {
-							setstate({ ...state, clientId: e.target.value });
+							setstate({ ...state, userRut: e.target.value });
 						}}
-						placeholder="Ingrese clientId"
+						placeholder="Ingrese el Rut del usuario"
 						required
 					/>
 				</div>
 				<div className="form-group">
-					<label htmlFor="totalAmount">totalAmount</label>
+					<label htmlFor="totalAmount">Monto total</label>
 					<input
 						className="form-control"
 						id="totalAmount"
@@ -50,16 +51,16 @@ export default function NuevaFicha () {
 						onChange={(e) => {
 							setstate({ ...state, totalAmount: e.target.value });
 						}}
-						placeholder="Ingrese totalAmount"
+						placeholder="Ingrese el Monto total"
 						required
 					/>
 				</div>
 				<div className="form-group">
-					<label htmlFor="startDate">startDate</label>
+					<label htmlFor="startDate">Fecha de inicio</label>
 					<input
 						className="form-control"
 						id="startDate"
-						type="startDate"
+						type="date"
 						value={state.startDate}
 						onChange={(e) => {
 							setstate({ ...state, startDate: e.target.value });
@@ -69,11 +70,11 @@ export default function NuevaFicha () {
 					/>
 				</div>
 				<div className="form-group">
-					<label htmlFor="endDate">endDate</label>
+					<label htmlFor="endDate">Fecha de término</label>
 					<input
 						className="form-control"
 						id="endDate"
-						type="endDate"
+						type="date"
 						value={state.endDate}
 						onChange={(e) => {
 							setstate({ ...state, endDate: e.target.value });
@@ -83,7 +84,7 @@ export default function NuevaFicha () {
 					/>
 				</div>
 				<div className="form-group">
-					<label htmlFor="interestRate">interestRate</label>
+					<label htmlFor="interestRate">Ingrese el interés actual</label>
 					<input
 						className="form-control"
 						id="interestRate"
@@ -102,6 +103,9 @@ export default function NuevaFicha () {
 					</button>
 				</div>
 			</form>
+			<Link to={`/menu-principal/?userId=${userid}`}>
+          		<button className="btn btn-primary">Volver al Menu Principal</button>
+        	</Link>
 		</div>
 	);
 }

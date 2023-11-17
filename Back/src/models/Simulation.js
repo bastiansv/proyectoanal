@@ -14,8 +14,8 @@ Simulation.init(
       type: Sequelize.DataTypes.INTEGER,
       allowNull: false,
     },
-    clientId: {
-      type: Sequelize.DataTypes.INTEGER,
+    userRut: {
+      type: Sequelize.DataTypes.STRING,
       allowNull: false,
     },
     totalAmount: {

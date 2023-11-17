@@ -4,6 +4,7 @@ import Login from "./views/auth/Login";
 import MenuPrincipal from "./views/users/menu_principal";
 import NuevaFicha from "./views/simulaciones/nueva-ficha";
 import Simulaciones from "./views/simulaciones/simulaciones";
+import Detalle from "./views/simulaciones/detalle-simulacion";
 
 export default function App() {
   return (
@@ -23,6 +24,9 @@ export default function App() {
 		      </Route>
           <Route path="/simulaciones">
 			      <Simulaciones />
+		      </Route>
+          <Route path="/detalle-simulacion">
+            <Detalle />
 		      </Route>
           
         </Switch>

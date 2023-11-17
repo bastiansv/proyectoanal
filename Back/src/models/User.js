@@ -11,7 +11,7 @@ User.init(
       primaryKey: true,
     },
 
-    name: {
+    email: {
       type: Sequelize.DataTypes.STRING,
       allowNull: false,
     },
