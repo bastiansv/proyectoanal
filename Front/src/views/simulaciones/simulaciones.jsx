@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getAllSimulations } from "../../repositories/simulations";
+import { getAllSimulations, getAllSimulationsbyId, getSimulationsbyUserId } from "../../repositories/simulations";
 import useSWR from "swr";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useLocation, useHistory } from "react-router-dom";
@@ -7,22 +7,29 @@ import { useLocation, useHistory } from "react-router-dom";
 const Simulaciones = () => {
   const { search } = useLocation();
   const params = new URLSearchParams(search);
-  const userid = params.get("userId");
+  const userId = params.get("userId");
 
   const history = useHistory();
   const [state, setstate] = useState({
-    userId: userid, // Asignar userId directamente al estado al inicio
+    userId: userId, // Asignar userId directamente al estado al inicio
   });
 
-  const { data: simulations, error } = useSWR("simulations", {
-    fetcher: getAllSimulations,
+  // Verificar si userid tiene un valor antes de llamar a useSWR
+  if (!userId) {
+    // Puedes manejar este caso, por ejemplo, redirigiendo a otra página
+    return <p>No se proporcionó el ID del usuario.</p>;
+  }
+
+  const { data: simulations, error, mutate } = useSWR("simulations", {
+    fetcher: () => getSimulationsbyUserId({userId:userId}),
     initialData: [],
     revalidateOnMount: true,
   });
 
+
   const handleSimulationDetail = (simulationId) => {
     // Redirigir a la página de detalle de simulación con el ID correspondiente
-    history.push(`/detalle-simulacion/?userId=${userid}&simulationId=${simulationId}`);
+    history.push(`/detalle-simulacion/?userId=${userId}&simulationId=${simulationId}`);
   };
 
   return (
@@ -42,7 +49,7 @@ const Simulaciones = () => {
             {simulations.map((simulation) => (
               <tr key={simulation.id}>
                 <td>{simulation.userRut}</td>
-                <td>{simulation.totalAmount}</td>
+                <td>{Math.floor(simulation.totalAmount)}</td>
                 <td>{simulation.startDate}</td>
                 <td>{simulation.endDate}</td>
                 <td>
@@ -61,7 +68,7 @@ const Simulaciones = () => {
       ) : (
         <p>Cargando simulaciones</p>
       )}
-      <Link to={`/menu-principal/?userId=${userid}`}>
+      <Link to={`/menu-principal/?userId=${userId}`}>
         <button className="btn btn-primary">Volver al Menu Principal</button>
       </Link>
     </div>

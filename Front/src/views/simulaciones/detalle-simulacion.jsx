@@ -44,7 +44,7 @@ export default function Detalle() {
 
   // Calcula el monto por cuota
 const fechasVencimiento = getFechasVencimiento();
-const montoPorCuota = simulation ? simulation.totalAmount / fechasVencimiento.length : 0;
+const montoPorCuota = simulation ? Math.floor(simulation.totalAmount / fechasVencimiento.length) : 0;
 
 return (
   <div className="container mt-4">
@@ -56,7 +56,7 @@ return (
             <tr>
               <th>N° de Cuota</th>
               <th>Fecha de Vencimiento</th>
-              <th>Monto</th>
+              <th>Monto en CLP</th>
             </tr>
           </thead>
           <tbody>
@@ -73,7 +73,7 @@ return (
           <Link to={`/menu-principal/?userId=${userId}`}>
             <button className="btn btn-primary">Volver al Menú Principal</button>
           </Link>
-          <h3>Monto total: {simulation.totalAmount}</h3>
+          <h3>Monto total: {Math.floor(simulation.totalAmount)}</h3>
         </div> 
       </div>
       

@@ -14,6 +14,7 @@ export default (app) => {
 	app.delete('/users/:userId', userController.delete);
 
   	app.get('/simulations', simulationController.getAllSimulations);
+	app.put('/simulations/all', simulationController.getSimulationsByUserId);
   	app.post('/simulations', simulationController.createSimulation);
   	app.get('/simulations/:id', simulationController.getSimulationById);
   	app.put('/simulations/:id', simulationController.updateSimulation);

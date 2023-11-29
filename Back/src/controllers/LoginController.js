@@ -9,7 +9,7 @@ export default class{
                 password: req.body.password
             },
         });
-        res.status(200).json({id: logeo.id});
+        res.status(200).json({id: logeo.id,email: logeo.email});
       }
       
     async get(req, res) {

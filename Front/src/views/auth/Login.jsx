@@ -13,14 +13,21 @@ const Login = () => {
     try {
         e.preventDefault();
         const response = await logUser(state);
-        history.push(`/menu-principal/?userId=${response.data.id}`);
+        const userEmail = response.data.email;
+        if(userEmail.endsWith("@financiera.cl")){ 
+            history.push(`/menu-principal/?userId=${response.data.id}`);
+        }else if(userEmail.endsWith("@financiera2.cl")){
+            history.push(`/menu-analista/?userId=${response.data.id}`);
+        }
     } catch (error) {
       console.error("Error inesperado:", error);
     }
   };
 
   return (
+    
     <div className="container mt-4" >
+        <h2> Iniciar sesión</h2>
         <form onSubmit={handleLogin}>
             <div className="form-group">
                 <label htmlFor="email">Email</label>

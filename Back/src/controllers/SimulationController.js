@@ -26,6 +26,29 @@ export default class SimulationController {
     }
   }
 
+  async getSimulationsByUserId(req, res) {
+    try {
+      
+      const userId = req.body.userId;
+      console.log(userId);
+  
+      // Buscar todas las simulaciones que coincidan con el userId
+      const simulations = await Simulation.findAll({
+        where: { userId: userId },
+      });
+  
+      if (!simulations || simulations.length === 0) {
+        res.status(404).json({ error: 'Simulaciones no encontradas para el usuario' });
+        return;
+      }
+  
+      res.send(simulations);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error al obtener las simulaciones' });
+    }
+  }  
+
   async createSimulation(req, res) {
     try {
       // Obtener el valor de la UF desde la API externa
